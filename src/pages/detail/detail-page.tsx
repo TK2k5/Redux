@@ -1,14 +1,32 @@
-import { useGetOneProductQuery } from "../../app/services/products.service";
+import { useAppDispatch, useAppSelector } from "../../app/hook";
+
+import { RootState } from "../../app/store";
+import { getOneProductExtraReducer } from "../../app/features/product/productSlice";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+
+// import { useGetOneProductQuery } from "../../app/services/products.service";
 
 const DetailPage = () => {
   const { id } = useParams();
 
   const {
-    data: product,
+    productInfor: product,
     isLoading,
     isError,
-  } = useGetOneProductQuery(String(id));
+  } = useAppSelector((state: RootState) => state.product);
+
+  // const {
+  //   data: product,
+  //   isLoading,
+  //   isError,
+  // } = useGetOneProductQuery(String(id));
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getOneProductExtraReducer(String(id)));
+  }, [dispatch, id]);
 
   if (isLoading) return <div>Loading...</div>;
   if (!product) return <div>No product found</div>;

@@ -1,19 +1,34 @@
 {
   "products": [
     {
-      "id": "27f1",
-      "name": "Product98 Edited",
-      "price": 12
+      "id": "fc39",
+      "name": "Product 18 Updated",
+      "price": 62
     },
     {
-      "id": "7d21",
-      "name": "Product96",
-      "price": 67
+      "id": "1cfb",
+      "name": "Product 94 Updated",
+      "price": 96
     },
     {
-      "id": "fc90",
-      "name": "Product6",
-      "price": 56
+      "id": "8000",
+      "name": "Product 67 Updated",
+      "price": 3
+    },
+    {
+      "id": "f11d",
+      "name": "Product 25 Updated",
+      "price": 89
+    },
+    {
+      "id": "d9a9",
+      "name": "Product 80 Updated",
+      "price": 90
+    },
+    {
+      "id": "733c",
+      "name": "Product 77 Updated",
+      "price": 39
     }
   ]
 }

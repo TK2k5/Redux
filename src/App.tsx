@@ -1,13 +1,14 @@
 import {
-  decrement,
-  increment,
-  incrementByAmount,
-} from "./app/features/counter/counterSlice";
-import {
+  createProduct,
   deleteProduct,
   editProduct,
   getProductById,
 } from "./app/features/product/productSlice";
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+} from "./app/features/counter/counterSlice";
 import { useAppDispatch, useAppSelector } from "./app/hook";
 
 import { RootState } from "./app/store";
@@ -45,9 +46,11 @@ function App() {
           increment
         </button>
 
-        <button onClick={() => handleAddProduct(data)}>Add Product</button>
+        <button onClick={() => dispatch(createProduct(data))}>
+          Add Product
+        </button>
 
-        <div className="">
+        {/* <div className="">
           {products && products.length === 0 && <h2>No product found</h2>}
           {products &&
             products.length > 0 &&
@@ -83,7 +86,7 @@ function App() {
                 </button>
               </div>
             ))}
-        </div>
+        </div> */}
       </div>
       <RouterProvider router={router} />
     </>
