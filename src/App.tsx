@@ -1,29 +1,22 @@
 import {
-  createProduct,
-  deleteProduct,
-  editProduct,
-  getProductById,
-} from "./app/features/product/productSlice";
-import {
   decrement,
   increment,
   incrementByAmount,
 } from "./app/features/counter/counterSlice";
 import { useAppDispatch, useAppSelector } from "./app/hook";
 
+import { CartIcon } from "./components/icon/cart";
 import { RootState } from "./app/store";
 import { RouterProvider } from "react-router-dom";
+import { createProduct } from "./app/features/product/productSlice";
 import { router } from "./routes/routes";
 import { useAddProductMutation } from "./app/services/products.service";
 
 function App() {
   const dispatch = useAppDispatch();
   const { count } = useAppSelector((state: RootState) => state.counter);
-  const { products, productInfor } = useAppSelector(
-    (state: RootState) => state.product
-  );
-  console.log("🚀 ~ App ~ productInfor:", productInfor);
 
+  const { cartItems } = useAppSelector((state) => state.cart);
   const data = {
     // id: Math.ceil(Math.random() * 100),
     name: "Product" + Math.ceil(Math.random() * 100),
@@ -38,17 +31,35 @@ function App() {
 
   return (
     <>
-      <div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginRight: "10px",
+        }}
+      >
         <h2>{count}</h2>
         <button onClick={() => dispatch(increment())}>increment</button>
         <button onClick={() => dispatch(decrement())}>increment</button>
         <button onClick={() => dispatch(incrementByAmount(5))}>
           increment
         </button>
-
         <button onClick={() => dispatch(createProduct(data))}>
           Add Product
         </button>
+        <h4
+          style={{
+            display: "flex",
+            gap: "3px",
+            justifyContent: "center",
+            alignContent: "center",
+          }}
+        >
+          <div style={{ width: "30px" }}>
+            <CartIcon />
+          </div>
+          <small>{cartItems.length}</small>
+        </h4>
 
         {/* <div className="">
           {products && products.length === 0 && <h2>No product found</h2>}

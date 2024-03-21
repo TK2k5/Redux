@@ -6,6 +6,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../app/hook";
 
 import { Link } from "react-router-dom";
+import { addToCart } from "../../app/features/cart/cartSlice";
 import { useEffect } from "react";
 
 const HomePage = () => {
@@ -60,6 +61,9 @@ const HomePage = () => {
                 }
               >
                 Edit Product
+              </button>
+              <button onClick={() => dispatch(addToCart(product.id))}>
+                Add to cart
               </button>
             </div>
           ))}
